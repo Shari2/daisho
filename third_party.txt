@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: Copyright (c) 2020 Marian Sauer
+
+
+Third party projects used:
+  Daisho USB DEVICE IP Core by Marshall H. and contributors
+  Folder: core/
+  LICENSE: Simplified BSD.
+           For details see core/LICENSES/BSD-2-Clause.txt.
+  References:
+    https://github.com/enjoy-digital/daisho
+    https://github.com/mossmann/daisho
+    

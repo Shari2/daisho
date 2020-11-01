@@ -1,0 +1,10 @@
+-- SPDX-License-Identifier: BSD-2-Clause
+-- SPDX-FileCopyrightText: Copyright (c) 2020 Marian Sauer
+
+daisho_usb2_ecm v0.0
+ - Hard fork from https://github.com/enjoy-digital/daisho commit 27bc20c3da392e60b2419d67c98f6c7475b73eb3
+ - SPDX tags to pass "reuse lint"
+ - License copy now provided in LICENSE folder to pass "reuse lint"
+ - Removed core/usb3 verilog code (not maintained in this project)
+ - Removed or replaced files that are not clearly BSD-2-Clause licensed
+ - Removed windows header dependency from usb_descrip_gen.c

@@ -1,23 +1,72 @@
-Test of the USB3 IP Core from Daisho on a Xilinx device
+SPDX-License-Identifier: BSD-2-Clause
 
-In this repository we are testing the USB3 IP Core from Daisho on a Xilinx device.
+SPDX-FileCopyrightText: Copyright (c) 2020 Marian Sauer
 
- * USB2 / ULPI working :) (vendor agnostic)
- * USB3 / PIPE working :) (IDDR/ODDR and PLL specific to Xilinx)
+# Goal
+Implement a real world use case USB-to-Ethernet device on an FPGA and learn
+something.
 
-This work was supported by [TimVideos.us](https://code.timvideos.us) and with a generous loan of a USB3.0 protocol analyzer from the Daisho project.
 
-The design currently uses a TUSB1310A for interfacing with the USB3.0 connector. Future plans include replacing this part using the high speed transceivers (GTPs/GTXs) found in Artix-7/Kintex-7 FPGAs.
+> "Complications arose, ensued, were overcome"
+>
+> -- Captain Jack Sparrow
 
-The current work is being done with;
 
- * Kintex 7 work[1] - [kc705 - Xilinx Kintex-7 FPGA KC705 Evaluation Kit](https://www.xilinx.com/products/boards-and-kits/ek-k7-kc705-g.html)
- * Artix 7 work[2] - [Nexys Video - Nexys Video Artix-7 FPGA: Trainer Board for Multimedia Applications](http://store.digilentinc.com/nexys-video-artix-7-fpga-trainer-board-for-multimedia-applications/)
+# What to expect
+Nothing really. This is a **personal**, one person, open source project worked
+on/maintained in **spare time**. See license details.
 
- * USB3.0 work - [HiTech Global - 3-Port USB 3 FMC Module](https://hitechglobal.us/index.php?route=product/product&path=18&product_id=233).
+# Contact
+Project home is https://github.com/Shari2/daisho_usb2_ecm
 
-The FMC module has 3 x USB3.0 ports. Two are connected via TUSB1310A ICs and the third is connected directly to the high speed transceivers.
+# Milestones
+1. USB 2.0 Full-speed only device enumeration with Linux xHCI Host
+2. USB 2.0 High-speed device enumeration with Linux xHCI Host
+3. Windows USBCV Test
+4. Implement Full-speed USB-to-Ethernet
+   (ECM function, 12 Mbit/s half duplex vs 10 Mbit/s full duplex)
+5. Cover USB 2.0 Full-speed device standard requirements or document violations
+6. Implement High-speed USB-to-Ethernet
+   (ECM function, 480 Mbit/s half duplex vs 100 Mbit/s full duplex)
+7. Cover USB 2.0 High-speed device standard requirements or document violations
 
-[1]: As HA/HB pins from HPC FMC are not connected on Xilinx on devboards, second TUSB1310A is not usable with the KC705.
+# Why Numato Opsis hardware?
+- No external Phy board required (ULPI Phy and RGMII Phy connected to FPGA)
+- Interfaces to implement real USB functions
+ - RGMII Phy for CDC ECM or CDC NCM function
+ - HDMI input for Audio/Video function
+ - SD Card for Mass Storage function
+- FOSS Hardware
 
-[2]: As the Nexys Video has only a [LPC FMC connector](https://en.wikipedia.org/wiki/FPGA_Mezzanine_Card#LPC_vs._HPC), only a limited amount set of the functionality is avalible, but it is enough to prove the design also works on the Artix-7 FPGA.
+# Why Daisho USB 2.0 Device IP core?
+- Simplified BSD license
+- No softcpu + software needed to operate
+- Offers progression path to USB 3.0 device
+
+# Why no USB 3.0 support?
+- USB 2.0 device standard compatibility is enough work
+- No hardware to test it on (a untested function is just maintenance overhead)
+
+# Risks trying to reproduce/reuse this project
+- Numato Opsis hardware appears to be End-of-life (last checked 2020-11-02)
+- FPGA is only supported by older vendor tools
+- Vendor lock-in by using FPGA vendor specific components
+- Vendor lock-in by using Phy specific datasheets
+
+# Standards to respect for compatibility/portability/interoperability
+- ULPI Revision 1.1 October 20, 2004 (fallback is the specific ULPI Phy datasheet)
+- RGMII Version 2.0 4/1/2002 (fallback is the specific RGMII Phy datasheet)
+- USB Revision 2.0 April 27, 2000 (usb.org)
+- USB CDC Revision 1.2 December 6, 2012 (usb.org)
+- USB CDC ECM Revision 1.2 December 6, 2012 (usb.org)
+- IEEE Std 802.3-2018 (ieee.org)
+
+# Other Resources
+
+[Daisho USB IP ported to Xilinx FPGA](https://github.com/enjoy-digital/daisho)
+
+[Daisho project](https://github.com/mossmann/daisho)
+
+[Numato Opsis hardware](https://numato.com/product/numato-opsis-fpga-based-open-video-platform/)
+
+[Other projects on Numato Opsis hardware](https://hdmi2usb.tv/numato-opsis/)

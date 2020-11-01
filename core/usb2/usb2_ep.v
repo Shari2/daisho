@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: BSD-2-Clause
+// SPDX-FileCopyrightText: Copyright (c) 2012-2013 Marshall H.
+
 
 //
 // usb 2.0 endpoint abstract
@@ -5,7 +8,7 @@
 // Copyright (c) 2012-2013 Marshall H.
 // All rights reserved.
 // This code is released under the terms of the simplified BSD license. 
-// See LICENSE.TXT for details.
+// See LICENSES/BSD-2-Clause.txt for details.
 //
 
 module usb2_ep (
@@ -232,7 +235,10 @@ end
 	wire	[9:0]	rd_addr = buf_out_addr + (ptr_out ? 10'd512 : 10'h0);
 	wire	[9:0]	wr_addr = buf_in_addr + (ptr_in ? 10'd512 : 10'h0);
 	
-usb2_ep_ram	iu2ep (
+// 1024x8b ram (1 write / 1 read / 2 clocks)
+// read latency: 1 clock
+
+usb2_ep_ram	#(8, 10) iu2ep (
 	.rd_clk		( rd_clk ),
 	.rd_adr 	( rd_addr ),
 	.rd_dat_r 	( buf_out_q ),

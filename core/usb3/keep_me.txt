@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: Copyright (c) 2020 Marian Sauer
+
+Keep directory in git repo.
+Required by usb_descrip_gen.c.

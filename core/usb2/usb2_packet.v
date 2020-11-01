@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSD-2-Clause
+// SPDX-FileCopyrightText: Copyright (c) 2012-2013 Marshall H.
 
 //
 // usb 2.0 packet handler
@@ -5,7 +7,7 @@
 // Copyright (c) 2012-2013 Marshall H.
 // All rights reserved.
 // This code is released under the terms of the simplified BSD license. 
-// See LICENSE.TXT for details.
+// See LICENSES/BSD-2-Clause.txt for details.
 //
 
 module usb2_packet (

@@ -1,3 +1,7 @@
+/* SPDX-License-Identifier: BSD-2-Clause */
+/* SPDX-FileCopyrightText: Copyright (c) 2013 Marshall H. */
+/* SPDX-FileCopyrightText: Copyright (c) 2017 Florent Kermarrec */
+
 
 //
 // USB 3.0/2.0 IP core descriptor generator
@@ -6,15 +10,13 @@
 // Copyright (c) 2017 Florent Kermarrec
 // All rights reserved.
 // This code is released under the terms of the simplified BSD license.
-// See LICENSE.TXT for details.
+// See LICENSES/BSD-2-Clause.txt for details.
 //
 
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>	// just to ruffle jared's feathers
 
 #define u8	unsigned char
 #define u16	unsigned short

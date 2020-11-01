@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: BSD-2-Clause
+// SPDX-FileCopyrightText: Copyright (c) 2013 Marshall H.
+
 parameter	[7:0]	DESCR_USB2_DEVICE	= 'd0;
 parameter	[6:0]	DESCR_USB3_DEVICE	= 'd0;
 parameter	[7:0]	DESCR_USB2_DEVICE_QUAL	= 'd18;
