@@ -56,15 +56,15 @@ architecture rtl of usb2_descrip_rom is
 
 
   signal memory : ramType := rom_init("usb2_descrip_rom.init");
-  signal adr_reg : std_logic_vector(7 downto 0);
+  signal read_address_register : std_logic_vector(7 downto 0);
 begin
 
   process (clk) is
   begin
     if rising_edge(clk) then
-      adr_reg <= adr;
+      read_address_register <= adr;
     end if;
   end process;
 
-  dat_r <= memory(to_integer(unsigned(adr_reg)));
+  dat_r <= memory(to_integer(unsigned(read_address_register)));
 end architecture;

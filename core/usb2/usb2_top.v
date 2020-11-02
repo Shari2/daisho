@@ -144,6 +144,27 @@ usb2_ulpi 	ia (
 );
 
 
+	wire	[3:0]	prot_sel_endp;
+	wire	[8:0]	prot_buf_in_addr;
+	wire	[7:0]	prot_buf_in_data;
+	wire			prot_buf_in_wren;
+	wire			prot_buf_in_ready;
+	wire			prot_buf_in_commit;
+	wire	[9:0]	prot_buf_in_commit_len;
+	wire			prot_buf_in_commit_ack;
+
+	wire	[8:0]	prot_buf_out_addr;
+	wire	[7:0]	prot_buf_out_q;
+	wire	[9:0]	prot_buf_out_len;
+	wire			prot_buf_out_hasdata;
+	wire			prot_buf_out_arm;
+	wire			prot_buf_out_arm_ack;
+	wire	[6:0]	prot_dev_addr;
+	
+	wire	[1:0]	prot_endp_mode;
+	wire			prot_data_toggle_act;
+	wire	[1:0]	prot_data_toggle;
+
 ////////////////////////////////////////////////////////////
 //
 // USB 2.0 Packet layer
@@ -217,26 +238,7 @@ usb2_packet ip (
 //
 ////////////////////////////////////////////////////////////
 
-	wire	[3:0]	prot_sel_endp;
-	wire	[8:0]	prot_buf_in_addr;
-	wire	[7:0]	prot_buf_in_data;
-	wire			prot_buf_in_wren;
-	wire			prot_buf_in_ready;
-	wire			prot_buf_in_commit;
-	wire	[9:0]	prot_buf_in_commit_len;
-	wire			prot_buf_in_commit_ack;
 
-	wire	[8:0]	prot_buf_out_addr;
-	wire	[7:0]	prot_buf_out_q;
-	wire	[9:0]	prot_buf_out_len;
-	wire			prot_buf_out_hasdata;
-	wire			prot_buf_out_arm;
-	wire			prot_buf_out_arm_ack;
-	wire	[6:0]	prot_dev_addr;
-	
-	wire	[1:0]	prot_endp_mode;
-	wire			prot_data_toggle_act;
-	wire	[1:0]	prot_data_toggle;
 	
 usb2_protocol ipr (
 	.reset_n			( reset_n_out ),

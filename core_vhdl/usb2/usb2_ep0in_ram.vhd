@@ -26,10 +26,10 @@ architecture rtl of usb2_ep0in_ram is
   type ramType is array (2**ADDRESS_WIDTH - 1 downto 0) of std_logic_vector(DATA_WIDTH -1 downto 0);
   signal memory : ramType;
 
-  signal rd_dat_r_reg : std_logic_vector(DATA_WIDTH -1  downto 0);
-  signal rd_adr_reg : std_logic_vector(ADDRESS_WIDTH - 1 downto 0);
+  signal read_data_register : std_logic_vector(DATA_WIDTH -1  downto 0);
+  signal read_address_register : std_logic_vector(ADDRESS_WIDTH - 1 downto 0);
 begin
-  rd_dat_r <= rd_dat_r_reg;
+  rd_dat_r <= read_data_register;
 
   process (clk) is
   begin
@@ -43,14 +43,14 @@ begin
   process (clk) is
   begin
     if rising_edge(clk) then
-      rd_adr_reg <= rd_adr;
+      read_address_register <= rd_adr;
     end if;
   end process;
 
   process (clk) is
   begin
     if rising_edge(clk) then
-      rd_dat_r_reg <= memory(to_integer(unsigned(rd_adr_reg)));
+      read_data_register <= memory(to_integer(unsigned(read_address_register)));
     end if;
   end process;
 end architecture;

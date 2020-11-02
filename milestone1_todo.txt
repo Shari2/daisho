@@ -1,0 +1,111 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: Copyright (c) 2020 Marian Sauer
+
+1. check if IOB FFs can be used for ULPI Phy signals to have constant timing in build runs
+
+
+dmesg enumeration
+  [24171.738468] usb 1-10.3.2.2: USB disconnect, device number 16
+  [24171.963325] usb 1-10.3.2.2: new full-speed USB device number 17 using xhci_hcd
+  [24172.063879] usb 1-10.3.2.2: not running at top speed; connect to a high speed hub
+  [24172.064444] usb 1-10.3.2.2: config 1 interface 0 altsetting 0 endpoint 0x81 has invalid maxpacket 512, setting to 64
+  [24172.064450] usb 1-10.3.2.2: config 1 interface 0 altsetting 0 endpoint 0x2 has invalid maxpacket 512, setting to 64
+  [24172.065147] usb 1-10.3.2.2: New USB device found, idVendor=1d50, idProduct=605a
+  [24172.065153] usb 1-10.3.2.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+  [24172.065156] usb 1-10.3.2.2: Product: Daisho USB test
+  [24172.065159] usb 1-10.3.2.2: Manufacturer: Great Scott Gadgets
+  [24172.065162] usb 1-10.3.2.2: SerialNumber: DAISHOUSB000
+
+2. HS Bulk max packet size is fixed to 512, FS BULK max packet size is 64 -> need to duplicate configuration descriptor
+
+lsusb -vvd 1d50:605a
+
+  Bus 001 Device 017: ID 1d50:605a OpenMoko, Inc. 
+  Couldn't open device, some information will be missing
+  Device Descriptor:
+    bLength                18
+    bDescriptorType         1
+    bcdUSB               2.00
+    bDeviceClass          255 Vendor Specific Class
+    bDeviceSubClass       255 Vendor Specific Subclass
+    bDeviceProtocol       255 Vendor Specific Protocol
+    bMaxPacketSize0        64
+    idVendor           0x1d50 OpenMoko, Inc.
+    idProduct          0x605a 
+    bcdDevice            0.01
+    iManufacturer           1 
+    iProduct                2 
+    iSerial                 3 
+    bNumConfigurations      1
+    Configuration Descriptor:
+      bLength                 9
+      bDescriptorType         2
+      wTotalLength           41
+      bNumInterfaces          1
+      bConfigurationValue     1
+      iConfiguration          0 
+      bmAttributes         0x80
+        (Bus Powered)
+      MaxPower              124mA
+      Interface Descriptor:
+        bLength                 9
+        bDescriptorType         4
+        bInterfaceNumber        0
+        bAlternateSetting       0
+        bNumEndpoints           2
+        bInterfaceClass       255 Vendor Specific Class
+        bInterfaceSubClass    255 Vendor Specific Subclass
+        bInterfaceProtocol    255 Vendor Specific Protocol
+        iInterface              2 
+        Endpoint Descriptor:
+          bLength                 7
+          bDescriptorType         5
+          bEndpointAddress     0x81  EP 1 IN
+          bmAttributes            2
+            Transfer Type            Bulk
+            Synch Type               None
+            Usage Type               Data
+          wMaxPacketSize     0x0200  1x 512 bytes
+          bInterval               1
+        Endpoint Descriptor:
+          bLength                 7
+          bDescriptorType         5
+          bEndpointAddress     0x02  EP 2 OUT
+          bmAttributes            2
+            Transfer Type            Bulk
+            Synch Type               None
+            Usage Type               Data
+          wMaxPacketSize     0x0200  1x 512 bytes
+          bInterval               1
+      Interface Descriptor:
+        bLength                 9
+        bDescriptorType         4
+        bInterfaceNumber        0
+        bAlternateSetting       1
+        bNumEndpoints           0
+        bInterfaceClass       255 Vendor Specific Class
+        bInterfaceSubClass    255 Vendor Specific Subclass
+        bInterfaceProtocol    255 Vendor Specific Protocol
+        iInterface              2 
+
+
+3. Document work flow from generate_ise_project to load_to_fpga
+
+unplug and replug dmesg output
+  [24325.338660] usb 1-10.3.2.2: USB disconnect, device number 17
+  [24327.096856] usb 1-10.3.2.2: new full-speed USB device number 18 using xhci_hcd
+  [24327.176834] usb 1-10.3.2.2: device descriptor read/64, error -32
+  [24327.364872] usb 1-10.3.2.2: device descriptor read/64, error -32
+  [24327.552839] usb 1-10.3.2.2: new full-speed USB device number 19 using xhci_hcd
+  [24327.634165] usb 1-10.3.2.2: device descriptor read/64, error -32
+  [24327.820870] usb 1-10.3.2.2: device descriptor read/64, error -32
+  [24327.929202] usb 1-10.3.2-port2: attempt power cycle
+  [24328.532633] usb 1-10.3.2.2: new full-speed USB device number 20 using xhci_hcd
+  [24328.533430] usb 1-10.3.2.2: Device not responding to setup address.
+  [24328.741040] usb 1-10.3.2.2: Device not responding to setup address.
+  [24328.948806] usb 1-10.3.2.2: device not accepting address 20, error -71
+  [24329.028795] usb 1-10.3.2.2: new full-speed USB device number 21 using xhci_hcd
+  [24329.029290] usb 1-10.3.2.2: Device not responding to setup address.
+
+
+4. Debug disconnect detection issue

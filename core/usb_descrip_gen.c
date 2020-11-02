@@ -17,6 +17,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
+#include <linux/byteorder/little_endian.h>
 
 #define u8	unsigned char
 #define u16	unsigned short
@@ -307,12 +308,17 @@ void add_bos()
 void add_string(u8 idx, char* str)
 {
 	char temp[32];
-	wchar_t w_str[128];
+	u16 utf16_le_string[127];
 	u32 len;
+	u32 ascii_len;
+	int i;
 	if(idx == 0)
 		len = 4;		// string0 is fixed at 4 bytes for language code
 	else
-		len = strlen(str)*2+2;
+	{
+		ascii_len = strlen(str);
+		len = ascii_len * 2 + 2;
+	}
 
 	memset(buf_2, 0, sizeof(buf_2));
 	a = buf_2;
@@ -321,13 +327,17 @@ void add_string(u8 idx, char* str)
 	print_offsets(temp, 1, 1);
 
 	if(idx > 0)
-		mbstowcs(w_str, str, 128);
+		for(i = 0; i < ascii_len; i++)
+		{
+			utf16_le_string[i] = __cpu_to_le16(*str);
+			str++;
+		}
 	else
-		memcpy(&w_str[0], str, 2);
+		memcpy(&utf16_le_string[0], str, 2);
 
 	*a++ = len;
 	*a++ = 0x03;
-	memcpy(a, w_str, len-2);
+	memcpy(a, utf16_le_string, len-2);
 	write_buf(buf_2, len);
 }
 
@@ -359,7 +369,7 @@ int main(int argc, char *argv[])
 
 	printf ("* Generating...\n");
 
-	add_device_descr(	0x300,		// USB spec number (auto fixed 2.10 for 2.0)
+	add_device_descr(	0x200,		// USB spec number (auto fixed 2.10 for 2.0)
 									// put 0x200 if you only use USB 2.0 core
 						0xFF,		// Class Code
 						0xFF,		// Subclass

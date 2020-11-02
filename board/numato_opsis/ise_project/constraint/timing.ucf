@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: Copyright (c) 2020 Marian Sauer
+
+NET "i_clk_100M" TNM_NET = "TNM_CLK100";
+TIMESPEC TS_CLK100 = PERIOD "TNM_CLK100" 10 ns HIGH 50 %;
+
+NET "io_ulpi_data<0>" IOB=FORCE;
+NET "io_ulpi_data<1>" IOB=FORCE;
+NET "io_ulpi_data<2>" IOB=FORCE;
+NET "io_ulpi_data<3>" IOB=FORCE;
+NET "io_ulpi_data<4>" IOB=FORCE;
+NET "io_ulpi_data<5>" IOB=FORCE;
+NET "io_ulpi_data<6>" IOB=FORCE;
+NET "io_ulpi_data<7>" IOB=FORCE;
+NET "i_ulpi_dir" IOB=FORCE;
+NET "i_ulpi_nxt" IOB=FORCE;
+NET "o_ulpi_stp" IOB=FORCE;
+
+

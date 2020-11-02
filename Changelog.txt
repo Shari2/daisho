@@ -1,6 +1,10 @@
 -- SPDX-License-Identifier: BSD-2-Clause
 -- SPDX-FileCopyrightText: Copyright (c) 2020 Marian Sauer
 
+
+daisho_usb2_ecm v0.0 milestone_1
+  - Fix string descriptor encoding to utf16_le
+
 daisho_usb2_ecm v0.0
  - Hard fork from https://github.com/enjoy-digital/daisho commit 27bc20c3da392e60b2419d67c98f6c7475b73eb3
  - SPDX tags to pass "reuse lint"

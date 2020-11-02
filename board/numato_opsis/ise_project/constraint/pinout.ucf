@@ -1,0 +1,48 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: Copyright (c) 2020 Marian Sauer
+
+# USB3340 - component U18
+NET "io_ulpi_data[0]"         LOC =    "Y14"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_D0)
+NET "io_ulpi_data[1]"         LOC =    "W14"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_D1)
+NET "io_ulpi_data[2]"         LOC =    "Y18"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_D2)
+NET "io_ulpi_data[3]"         LOC =    "W17"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_D3)
+NET "io_ulpi_data[4]"         LOC =   "AA14"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_D4)
+NET "io_ulpi_data[5]"         LOC =   "AB14"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_D5)
+NET "io_ulpi_data[6]"         LOC =    "Y16"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_D6)
+NET "io_ulpi_data[7]"         LOC =    "W15"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_D7)
+NET "i_ulpi_dir"              LOC =    "W13"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_DIR)
+NET "i_ulpi_nxt"              LOC =    "V13"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_NXT)
+# CLKOUT tied to 3.3V = PHY in input clock mode, Link provides ULPI clock
+NET "o_ulpi_clk_60M"          LOC =    "Y13"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_REFCLK)
+NET "o_ulpi_reset_n"          LOC =    "V17"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_RESETB)
+NET "o_ulpi_stp"              LOC =    "W18"       |IOSTANDARD =        LVCMOS33;     #                      (/FPGA_Bank_1_2/USB_STP)
+# FXO-HC536R - component U17
+#                      (/FPGA_Bank_1_2/USRCLK)
+NET "i_clk_100M"               LOC =    "AB13"      |IOSTANDARD =        LVCMOS33;
+
+# SW_PUSH - component SW1
+#                      (/FPGA_Bank_0_3/SWITCH | Net-(R54-Pad2))
+NET "i_reset_n"         LOC =    "Y3"        |IOSTANDARD =        LVCMOS15 |SLEW=SLOW            |DRIVE=12            ;
+NET "i_reset_n" PULLUP;
+
+#debug
+# \/ Weakly pulled (1M) to VCC1V5 via R117
+#NET "debug_pci_io<3>"                  LOC =     "F5"       |IOSTANDARD =            LVCMOS15 |SLEW=SLOW;
+# MICRO_SD - component U11
+# \/ Weakly pulled (100k) to VCC3V3 via R61
+#                      (/FPGA_Bank_1_2/SD_DAT3)
+NET "o_sdcard_cs"            LOC =     "Y5"       |IOSTANDARD =        LVCMOS33 |SLEW=SLOW            |DRIVE=12            ;
+# \/ Weakly pulled (100k) to VCC3V3 via R62
+#                      (/FPGA_Bank_1_2/SD_CMD)
+NET "o_sdcard_di"            LOC =     "U6"       |IOSTANDARD =        LVCMOS33 |SLEW=SLOW            |DRIVE=12            ;
+# \/ Weakly pulled (100k) to VCC3V3 via R63
+#                      (/FPGA_Bank_1_2/SD_DAT0)
+NET "o_sdcard_do"            LOC =    "AA4"       |IOSTANDARD =        LVCMOS33 |SLEW=SLOW            |DRIVE=12            ;
+# \/ Weakly pulled (100k) to VCC3V3 via R60
+#                      (/FPGA_Bank_1_2/SD_DAT2)
+NET "o_sdcard_nc"            LOC =    "AB5"       |IOSTANDARD =        LVCMOS33 |SLEW=SLOW            |DRIVE=12            ;
+# \/ Weakly pulled (100k) to VCC3V3 via R64
+#                      (/FPGA_Bank_1_2/SD_DAT1)
+NET "o_sdcard_rsv"           LOC =    "AB4"       |IOSTANDARD =        LVCMOS33 |SLEW=SLOW            |DRIVE=12            ;
+#                      (/FPGA_Bank_1_2/SD_CLK)
+NET "o_sdcard_sck"           LOC =     "T7"       |IOSTANDARD =        LVCMOS33 |SLEW=SLOW            |DRIVE=12            ;
