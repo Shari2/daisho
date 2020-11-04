@@ -133,6 +133,7 @@ lsusb -vvd 1d50:605a
 [12736.794010] usb 1-10.3.2.2: SerialNumber: DAISHOUSB000
 
 
-5. Fix usb reset not bringing device in device default state
+# 5. Fix usb reset not bringing device in device default state
+# Passing USBCV2 150 enumeration test now. See USBCV_EHCI/milestone_1/Chapter_9_Tests_-_Failed_-_2020-11-04_15-12-29_redacted.html.
 
 

@@ -3,3 +3,4 @@
 
 1. usb_descriptor_gen.c: Always use utf16_le encoding string descriptor. mbstowcs() depends on local settings.
 2. usb2_ulpi.v: Do not use VbusValid in standard periperhal. It may never be set if device is behind USB hubs.
+3. usb2_ulpi.v: Transition to device default state on usb reset.

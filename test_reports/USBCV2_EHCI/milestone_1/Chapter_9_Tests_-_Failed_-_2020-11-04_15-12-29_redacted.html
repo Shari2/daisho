@@ -1,0 +1,484 @@
+<HTML><HEAD>
+	<META http-equiv="X-UA-Compatible" content="IE=edge" />
+	<META charset="UTF-8" />
+	<STYLE type='text/css'>
+		BODY { background-color: #DFDFDF; }
+		.dm_display
+		{
+		    color: Navy;
+		    font-family: monospace;
+		    background-color: White;
+		    border-width: 3px;
+		    border-style: outset;
+		}
+
+		#suite-output
+		{
+		    background-color: #FFFFDD;
+		    border: ridge 3px #FFFFDD;
+		    border-collapse: collapse;
+		    padding: 0;
+		    margin: 0;
+		    empty-cells: hide
+		}
+
+		#test-header
+		{
+		    font-weight: bold;
+		    font-size: large;
+		    border-top: ridge 2px #FFFFDD;
+		    border-bottom: ridge 2px #FFFFDD;
+		    padding: 0;
+		    margin: 0;
+		}
+
+		.test-pass, .test-fail
+		{
+		    float: right;
+		    border-left: ridge 2px #FFFDD;
+		    min-width: 6em;
+		}
+
+		.test-pass { background-color: #00FF00; }
+		.test-fail { background-color: #FF8888; }
+
+		.test-details
+		{
+		    clear: both;
+		    font-family: monospace;
+		    padding: 0;
+		    margin: 0;
+		    empty-cells: hide;
+		}
+
+		.label
+		{
+		    float: left;
+		    width: 6em;
+		}
+
+		.content
+		{
+		    white-space: pre-wrap;
+		    margin-left: 7em;
+		}
+
+		.err_log, .warn_log
+		{
+		    color: Red;
+		}
+
+		.err_log { font-weight: bold; }
+
+		.unexpected_log
+		{
+		    color: Red;
+		    background-color: Yellow;
+		    font-weight: bold;
+		    font-style: italic;
+		}
+	</STYLE>
+	<TITLE>Chapter 9 Tests - 2020-11-04 15-12-29</TITLE>
+	<META name='Suite-Name' content='Chapter 9 Tests.cvtests' />
+	<META name='Suite-Revision' content='12742' />
+	<META name='Suite-Revision-Date' content='2019-09-20 17:59:10 -0700 (Fri, 20 Sep 2019)' />
+	<META name='Test-Version' content='CVExe.exe ver 3.0.0.0' />
+	<META name='Test-Version' content='BaseUtilities.dll ver 3.0.0.0' />
+	<META name='Test-Version' content='CommandVerifierLog.dll ver 3.0.0.0' />
+	<META name='Test-Version' content='TSMFCGuiDialogHelperDLL.dll ver 3.0.0.0' />
+	<META name='Test-Version' content='TestUtilities.dll ver 3.0.0.0' />
+	<META name='Test-Version' content='TestSuiteEngine.dll ver 3.0.0.0' />
+	<META name='Test-Version' content='EhciDevIOCTL.dll ver 1.15.13.0' />
+	<META name='Test-Version' content='EhciTestServices.dll ver 1.15.13.0' />
+	<META name='Test-Version' content='USBUtilities.dll ver 1.4.5.1' />
+	<META name='Test-Version' content='StackSwitcher.dll ver 1.4.5.1' />
+	<META name='Test-Version' content='USBCommandVerifier.dll ver 1.15.13.0' />
+	<META name='Device-Under-Test' content='VID=1D50,PID=605A' />
+	<META name='Test-Pass' content='Device Descriptor Test (Configuration Index 0) [Fails (0); Aborts (0); Warnings (2)]' />
+	<META name='Test-Pass' content='Device Descriptor Test (Configuration Index 0) [Fails (0); Aborts (0); Warnings (2)]' />
+	<META name='Test-Pass' content='TD 9.3 Interface Association Descriptor Test (Config 0) [Fails (0); Aborts (0); Warnings (0)]' />
+	<META name='Test-Fail' content='TD 9.7 BOS Descriptor Test [Fails (1); Aborts (0); Warnings (0)]' />
+	<META name='Test-Fail' content='Configuration Descriptor Test (Configuration Index 0) [Fails (1); Aborts (0); Warnings (0)]' />
+	<META name='Test-Pass' content='Configuration Descriptor Test (Configuration Index 0) [Fails (0); Aborts (0); Warnings (0)]' />
+	<META name='Test-Fail' content='Interface Descriptor Test (Configuration Index 0) [Fails (2); Aborts (0); Warnings (0)]' />
+	<META name='Test-Fail' content='Endpoint Descriptor Test (Configuration Index 0) [Fails (2); Aborts (0); Warnings (0)]' />
+	<META name='Test-Fail' content='Endpoint Descriptor Test (Configuration Index 0) [Fails (2); Aborts (0); Warnings (0)]' />
+	<META name='Test-Fail' content='Halt Endpoint Test (Configuration Index 0) [Fails (4); Aborts (0); Warnings (0)]' />
+	<META name='Test-Pass' content='SetConfiguration Test (Configuration Index 0) [Fails (0); Aborts (0); Warnings (0)]' />
+	<META name='Test-Pass' content='Suspend/Resume Test (Configuration Index 0) [Fails (0); Aborts (0); Warnings (0)]' />
+	<META name='Test-Pass' content='Remote Wakeup Test (Configuration Index 0) [Fails (0); Aborts (0); Warnings (0)]' />
+	<META name='Test-Pass' content='Remote Wakeup Test (Configuration Index 0) [Fails (0); Aborts (0); Warnings (0)]' />
+	<META name='Test-Pass' content='Enumeration Test (repeat 150 times) [Fails (0); Aborts (0); Warnings (0)]' />
+	<META name='Suite-Result' content='FAIL [Fails (12); Aborts (0); Warnings (6)]' />
+	<META name='Log-Name' content='Chapter 9 Tests - 2020-11-04 15-12-29.html' />
+	<META name='Test-Count' content='15' />
+</HEAD>
+<BODY><DIV id='suite-summary'>
+	<DIV><STRONG>APPLICATION: </STRONG> USB 2 Command Verifier<BR></DIV>
+	<DIV><STRONG>TEST SUITE: </STRONG> Chapter 9 Tests.cvtests<BR></DIV>
+	<DIV><STRONG>REVISION: </STRONG> 12742<BR></DIV>
+	<DIV><STRONG>REVISION DATE: </STRONG> 2019-09-20 17:59:10 -0700 (Fri, 20 Sep 2019)<BR></DIV>
+	<DIV><STRONG>OPERATING SYSTEM: </STRONG> redacted <BR></DIV>
+	<DIV><STRONG>WORKSTATION: </STRONG> redacted <BR></DIV>
+	<DIV><STRONG>DATE: </STRONG> Wednesday, November 04, 2020<BR></DIV>
+	<DIV><STRONG>TIME: </STRONG> 03:15:48 PM<BR></DIV>
+	<DIV><STRONG>OPERATOR: </STRONG> redacted <BR></DIV>
+	<DIV><STRONG>NUMBER OF TESTS: </STRONG> 15<BR></DIV>
+	<DIV><STRONG>LOG NAME: </STRONG> Chapter 9 Tests - 2020-11-04 15-12-29<BR></DIV>
+	<DIV><STRONG>RESULT: </STRONG> <A href='#anchor_7'>failed</A><BR></DIV>
+<HR>
+</DIV>
+<BR><BR>
+<DIV id='suite-output'>
+<DIV id='test-header'>InitializeTestSuite</DIV>
+<DIV class='test-details'>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Test log initialized.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Log Level: Normal</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>User Input module initialized</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>redacted</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Service Pack 1.0</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>CVExe.exe ver 3.0.0.0</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>BaseUtilities.dll ver 3.0.0.0</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>CommandVerifierLog.dll ver 3.0.0.0</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>TSMFCGuiDialogHelperDLL.dll ver 3.0.0.0</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>TestUtilities.dll ver 3.0.0.0</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>TestSuiteEngine.dll ver 3.0.0.0</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>EhciDevIOCTL.dll ver 1.15.13.0</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>EhciTestServices.dll ver 1.15.13.0</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>USBUtilities.dll ver 1.4.5.1</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>StackSwitcher.dll ver 1.4.5.1</DIV></DIV>
+<DIV style='color:#00005F'><DIV class='label'>INFO</DIV><DIV class='content'>USBCommandVerifier.dll ver 1.15.13.0</DIV></DIV>
+<DIV style='font-weight: bold;color:#00007F'><DIV class='label'>INFO</DIV><DIV class='content'>Host selected: PCI-Bus 0, Gerät 26, Funktion 0</DIV></DIV>
+<DIV style='font-weight: bold;color:#00007F'><DIV class='label'>INFO</DIV><DIV class='content'>DUT selected: FS  Device addr=2:   VID=1d50, PID=605a</DIV></DIV>
+</DIV>
+<DIV id='test-header'>GetNumberOfConfigurations</DIV>
+<DIV class='test-details'>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of configurations: 1</DIV></DIV>
+</DIV>
+<DIV id='test-header'>GetNumberOfConfigurations_Other</DIV>
+<DIV class='test-details'>
+<DIV class='warn_log'><DIV class='label'>WARNING</DIV><DIV class='content'>Number of configurations found does not match bNumConfigurations value in device qualifier descriptor - ignoring bNumConfigurations</DIV></DIV>
+<DIV class='warn_log'><DIV class='label'>WARNING</DIV><DIV class='content'>Configurations found: 0. Reported in descriptor: 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of Other Speed configurations: 0</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_4'>Device Descriptor Test (Configuration Index 0)</A><DIV class='test-pass'>Passed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:12:35</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device descriptor length : 12</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device descriptor type : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Major version : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Minor version : 0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device class is vendor specific</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device sub class : ff</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device protocol : ff</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device MaxPacketSize0 : 40</DIV></DIV>
+<DIV class='warn_log'><DIV class='label'>WARNING</DIV><DIV class='content'>Couldn't open vendor name file usbif.json.</DIV></DIV>
+<DIV class='warn_log'><DIV class='label'>WARNING</DIV><DIV class='content'>Failed to get vendor information for VendorID : 1d50</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device ProductID : 605a</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device BCD : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>    ENGLISH_US           language string descriptor is : Great Scott Gadgets</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>    ENGLISH_US           language string descriptor is : Daisho USB test</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>    ENGLISH_US           language string descriptor is : DAISHOUSB000</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of configurations device supports : 1</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:12:36</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Device Descriptor Test (Configuration Index 0):
+     Number of: Fails (0); Aborts (0); Warnings (2) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_5'>Device Descriptor Test (Configuration Index 0)</A><DIV class='test-pass'>Passed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:12:36</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device descriptor length : 12</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device descriptor type : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Major version : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Minor version : 0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device class is vendor specific</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device sub class : ff</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device protocol : ff</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device MaxPacketSize0 : 40</DIV></DIV>
+<DIV class='warn_log'><DIV class='label'>WARNING</DIV><DIV class='content'>Couldn't open vendor name file usbif.json.</DIV></DIV>
+<DIV class='warn_log'><DIV class='label'>WARNING</DIV><DIV class='content'>Failed to get vendor information for VendorID : 1d50</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device ProductID : 605a</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device BCD : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>    ENGLISH_US           language string descriptor is : Great Scott Gadgets</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>    ENGLISH_US           language string descriptor is : Daisho USB test</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>    ENGLISH_US           language string descriptor is : DAISHOUSB000</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of configurations device supports : 1</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:12:37</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Device Descriptor Test (Configuration Index 0):
+     Number of: Fails (0); Aborts (0); Warnings (2) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_6'>TD 9.3 Interface Association Descriptor Test (Config 0)</A><DIV class='test-pass'>Passed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:12:37</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>
+Device has 1 function, of which 0 have an Interface Association descriptor.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Function #1 does not have an Interface Association Descriptor.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'></DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>This device does not contain an Interface Association Descriptor</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:12:38</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ TD 9.3 Interface Association Descriptor Test (Config 0):
+     Number of: Fails (0); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_7'><A href='#anchor_8'>TD 9.7 BOS Descriptor Test</A></A><DIV class='test-fail'>Failed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:12:38</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>USB Version number of device:  2.00</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>BOS Descriptors are not supported in USB 2.00 and before.</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.1.20) Devices must respond with a Request Error to GetDescriptor requests that specify an invalid descriptor type.</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:12:53</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  15 seconds.</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ TD 9.7 BOS Descriptor Test:
+     Number of: Fails (1); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_8'><A href='#anchor_10'>Configuration Descriptor Test (Configuration Index 0)</A></A><DIV class='test-fail'>Failed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:12:53</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of interface descriptors found 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of alternate interface descriptors found : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of endpoint descriptors found : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor length : 9</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor type : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor TotalLength : 29</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor NumInterfaces : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor ConfigurationValue: 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor string descriptor index : 0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor bmAttributes : 80</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device does not support remote wake up</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Maximum power device requires : 124mA</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device is BUS POWERED</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.1.100) Devices must support a GetStatus Standard Request.</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:13:02</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  9 seconds.</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Configuration Descriptor Test (Configuration Index 0):
+     Number of: Fails (1); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_9'>Configuration Descriptor Test (Configuration Index 0)</A><DIV class='test-pass'>Passed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:13:02</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of interface descriptors found 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of alternate interface descriptors found : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Number of endpoint descriptors found : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor length : 9</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor type : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor TotalLength : 29</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor NumInterfaces : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor ConfigurationValue: 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor string descriptor index : 0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Configuration descriptor bmAttributes : 80</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device does not support remote wake up</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Maximum power device requires : 124mA</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device is BUS POWERED</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:13:03</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Configuration Descriptor Test (Configuration Index 0):
+     Number of: Fails (0); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_10'><A href='#anchor_11'>Interface Descriptor Test (Configuration Index 0)</A></A><DIV class='test-fail'>Failed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:13:03</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Bandwidth check passed</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing Interface number : 0 Alternate setting : 0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor length : 9</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bDescriptorType : 4</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bAlternateSetting : 0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bNumEndPoints: 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bInterfaceClass is vendor-specific</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bInterfaceSubClass : ff</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device uses a vendor-specific protocol for this interface</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>    ENGLISH_US           language string descriptor is : Daisho USB test</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Calling SetInterface(), InterfaceNumber=0, AlternateSetting=0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Calling GetInterface(), InterfaceNumber=0, AlternateSetting=0</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.50) A device must support the GetInterface request if it has alternate settings for that interface.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing Interface number : 0 Alternate setting : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor length : 9</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bDescriptorType : 4</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bAlternateSetting : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bNumEndPoints: 0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bInterfaceClass is vendor-specific</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Interface descriptor bInterfaceSubClass : ff</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device uses a vendor-specific protocol for this interface</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>    ENGLISH_US           language string descriptor is : Daisho USB test</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Calling SetInterface(), InterfaceNumber=0, AlternateSetting=1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Calling GetInterface(), InterfaceNumber=0, AlternateSetting=1</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.50) A device must support the GetInterface request if it has alternate settings for that interface.</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:13:19</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  16 seconds.</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Interface Descriptor Test (Configuration Index 0):
+     Number of: Fails (2); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_11'><A href='#anchor_12'>Endpoint Descriptor Test (Configuration Index 0)</A></A><DIV class='test-fail'>Failed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:13:19</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing Interface number : 0 Alternate setting : 0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor length : 7</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor type : 5</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint Type : Bulk, Number : 1, Direction : IN</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor bmAttributes : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor raw MaxPacketSize : 200</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor interval : 1</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Illegal full speed bulk endpoint MaxPacketSize : 200</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.80) A Full speed Bulk endpoint must have a MaxPacketSize of 0x08/0x10/0x20/0x40.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor length : 7</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor type : 5</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint Type : Bulk, Number : 2, Direction : OUT</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor bmAttributes : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor raw MaxPacketSize : 200</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor interval : 1</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Illegal full speed bulk endpoint MaxPacketSize : 200</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.80) A Full speed Bulk endpoint must have a MaxPacketSize of 0x08/0x10/0x20/0x40.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing Interface number : 0 Alternate setting : 1</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:13:20</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Endpoint Descriptor Test (Configuration Index 0):
+     Number of: Fails (2); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_12'><A href='#anchor_13'>Endpoint Descriptor Test (Configuration Index 0)</A></A><DIV class='test-fail'>Failed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:13:20</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing Interface number : 0 Alternate setting : 0</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor length : 7</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor type : 5</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint Type : Bulk, Number : 1, Direction : IN</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor bmAttributes : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor raw MaxPacketSize : 200</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor interval : 1</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Illegal full speed bulk endpoint MaxPacketSize : 200</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.80) A Full speed Bulk endpoint must have a MaxPacketSize of 0x08/0x10/0x20/0x40.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor length : 7</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor type : 5</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint Type : Bulk, Number : 2, Direction : OUT</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor bmAttributes : 2</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor raw MaxPacketSize : 200</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint descriptor interval : 1</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Illegal full speed bulk endpoint MaxPacketSize : 200</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.80) A Full speed Bulk endpoint must have a MaxPacketSize of 0x08/0x10/0x20/0x40.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing Interface number : 0 Alternate setting : 1</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:13:21</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Endpoint Descriptor Test (Configuration Index 0):
+     Number of: Fails (2); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_13'>Halt Endpoint Test (Configuration Index 0)</A><DIV class='test-fail'>Failed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:13:21</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing Interface number : 0 Alternate setting : 0</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.50) A device must support the GetInterface request if it has alternate settings for that interface.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing EndPoint type : Bulk, Address : 81</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint GetStatus request failed</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint is currently not halted</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Halt endpoint failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint GetStatus request failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Clear endpoint halt failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint GetStatus request failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.91) A device that has Bulk/Interrupt endpoints must support the Halt Endpoint request on those endpoints.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing EndPoint type : Bulk, Address : 2</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint GetStatus request failed</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint is currently halted</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Clear endpoint halt failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint GetStatus request failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Halt endpoint failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint GetStatus request failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Clear endpoint halt failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>INFO</DIV><DIV class='content'>Endpoint GetStatus request failed</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.91) A device that has Bulk/Interrupt endpoints must support the Halt Endpoint request on those endpoints.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Testing Interface number : 0 Alternate setting : 1</DIV></DIV>
+<DIV class='err_log'><DIV class='label'>FAIL</DIV><DIV class='content'>(USB: 1.2.50) A device must support the GetInterface request if it has alternate settings for that interface.</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:15:12</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  111 seconds (1 minute, 51 seconds).</DIV></DIV>
+<DIV style='font-weight: bold;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Halt Endpoint Test (Configuration Index 0):
+     Number of: Fails (4); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_14'>SetConfiguration Test (Configuration Index 0)</A><DIV class='test-pass'>Passed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:15:12</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>SetConfiguration with configuration value : 1</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Unconfigured the device</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>SetConfiguration with configuration value : 1</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:15:13</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ SetConfiguration Test (Configuration Index 0):
+     Number of: Fails (0); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_15'>Suspend/Resume Test (Configuration Index 0)</A><DIV class='test-pass'>Passed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:15:13</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Suspended the parent port of the device</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:15:14</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Suspend/Resume Test (Configuration Index 0):
+     Number of: Fails (0); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_16'>Remote Wakeup Test (Configuration Index 0)</A><DIV class='test-pass'>Passed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:15:14</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>The device does not support remote wakeup</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:15:15</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Remote Wakeup Test (Configuration Index 0):
+     Number of: Fails (0); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_17'>Remote Wakeup Test (Configuration Index 0)</A><DIV class='test-pass'>Passed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:15:15</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>The device does not support remote wakeup</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:15:16</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  1 second.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Remote Wakeup Test (Configuration Index 0):
+     Number of: Fails (0); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'><A  name='anchor_18'>Enumeration Test (repeat 150 times)</A><DIV class='test-pass'>Passed</DIV></DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#0000AA'><DIV class='label'>INFO</DIV><DIV class='content'>Start time: Nov 04, 2020 - 15:15:16</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Device speed is Full</DIV></DIV>
+<DIV style='font-weight: bold'><DIV class='label'>INFO</DIV><DIV class='content'>Beginning enumeration test with 150 enumerations.  This may take several minutes to complete.</DIV></DIV>
+<DIV><DIV class='label'>INFO</DIV><DIV class='content'>Enumerated 150 iterations.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>
+Stop time: Nov 04, 2020 - 15:15:48</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Duration:  32 seconds.</DIV></DIV>
+<DIV style='font-weight: bold;color:#007F00'><DIV class='label'>INFO</DIV><DIV class='content'>Stopping Test [ Enumeration Test (repeat 150 times):
+     Number of: Fails (0); Aborts (0); Warnings (0) ]
+</DIV></DIV>
+</DIV>
+<DIV id='test-header'>Display Other Tests To Run</DIV>
+<DIV class='test-details'>
+</DIV>
+<DIV id='test-header'>Summary</DIV>
+<DIV class='test-details'>
+<DIV style='font-weight: bold;font-style:italic;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>TEST SUITE SUMMARY:
+    [ Fails (12); Aborts (0); Warnings (6) ]</DIV></DIV>
+<DIV style='font-weight: bold;font-style:italic;color:#BF0000'><DIV class='label'>INFO</DIV><DIV class='content'>TEST RESULTS:
+    [ Passed (9); Failed (6) ]</DIV></DIV>
+</DIV>
+</DIV>
+</BODY></HTML>
