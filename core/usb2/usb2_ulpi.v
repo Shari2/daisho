@@ -145,6 +145,7 @@ output	wire	[1:0]	dbg_linestate
 	
 	// about 3ms from start of SE0
 	wire			se0_bus_reset 	= (dc_wrap == 710); 
+	reg				se0_bus_reset_1;
 	assign			se0_reset		= se0_bus_reset;
 	
 	assign 			dbg_linestate = line_state;
@@ -158,6 +159,7 @@ always @(posedge phy_clk) begin
 	
 	sess_valid_1 <= sess_valid;
 	phy_dir_1 <= phy_dir;
+	se0_bus_reset_1 <= se0_bus_reset;
 
 	dc <= dc + 1'b1;
 	
@@ -253,6 +255,13 @@ always @(posedge phy_clk) begin
 			dc_wrap <= 0;
 		end
 		
+		if(se0_bus_reset_1 & ~se0_bus_reset) begin
+			// enter device default state
+			reset_ulpi <= 0;
+		end else begin
+			reset_ulpi <= 1;
+		end
+
 		know_recv_packet <= 0;
 
 		// see if PHY has stuff for us
