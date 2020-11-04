@@ -133,7 +133,7 @@ begin
   o_sdcard_cs  <= debug(4); -- SD_DAT3
   o_sdcard_nc  <= debug(5); -- SD_DAT2
 
-  debug <= "0" & dbg_linestate(1) & i_ulpi_dir & debug_clk_forward & async_reset_n & dbg_linestate(0);
+  debug <= "0" & dbg_linestate(1) & i_ulpi_dir & debug_clk_forward & reset_n_out & dbg_linestate(0);
   o_ulpi_reset_n <= ulpi_reset_n;
 
   buf_in_addr <= (others => '0');
@@ -244,7 +244,7 @@ begin
     phy_ulpi_nxt       => i_ulpi_nxt,
     phy_ulpi_stp       => o_ulpi_stp,
     reset_n            => clk_100M_reset_n,
-    reset_n_out        => open,
+    reset_n_out        => reset_n_out,
     stat_configured    => stat_configured   ,
     stat_connected     => stat_connected    ,
     stat_fs            => stat_fs           ,
