@@ -152,7 +152,7 @@ begin
     i_clk_100M => i_clk_100M,
     o_clk_100M => clk_100M,
     o_clk_60M => ulpi_clk_60M,
-    i_async_reset => '0',
+    i_async_reset => not i_reset_n,
     o_locked => pll_locked
   );
 
