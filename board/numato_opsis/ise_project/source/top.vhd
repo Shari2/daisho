@@ -156,6 +156,11 @@ begin
     o_locked => pll_locked
   );
 
+
+  -- ULPI Clock Input Mode
+  -- Phy datasheet "When using ULPI Clock Input Mode, the Link must supply the 60 MHz ULPI clock to the USB3340. In this mode the 60 MHz ULPI Clock is connected to the REFCLK pin, and the CLKOUT pin is tied high to VDDIO."
+  -- ULPI specificatoin "The Link ... should not activate its clock output until its PLL is stable. An unstable Link clock may cause the PHY PLL to take longer to stabilize."
+
   ulpi_clock_forward_inst : oddr2
   generic map
   (
@@ -168,8 +173,14 @@ begin
     c0 => ulpi_clk_60M,
     c1 => not(ulpi_clk_60M),
     d0 => '1',
-    d1 => '0'
+    d1 => '0',
+    r => not pll_locked
   );
+
+  -- Phy datasheet "The REFCLK should be enabled when the RESETB pin is brought high"
+  ulpi_reset_n <= pll_locked;
+
+
 
   debug_clock_forward_inst : oddr2
   generic map
@@ -231,7 +242,7 @@ begin
     phy_ulpi_nxt       => i_ulpi_nxt,
     phy_ulpi_stp       => o_ulpi_stp,
     reset_n            => clk_100M_reset_n,
-    reset_n_out        => ulpi_reset_n      ,
+    reset_n_out        => open,
     stat_configured    => stat_configured   ,
     stat_connected     => stat_connected    ,
     stat_fs            => stat_fs           ,
