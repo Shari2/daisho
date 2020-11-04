@@ -91,21 +91,48 @@ lsusb -vvd 1d50:605a
 
 3. Document work flow from generate_ise_project to load_to_fpga
 
-unplug and replug dmesg output
-  [24325.338660] usb 1-10.3.2.2: USB disconnect, device number 17
-  [24327.096856] usb 1-10.3.2.2: new full-speed USB device number 18 using xhci_hcd
-  [24327.176834] usb 1-10.3.2.2: device descriptor read/64, error -32
-  [24327.364872] usb 1-10.3.2.2: device descriptor read/64, error -32
-  [24327.552839] usb 1-10.3.2.2: new full-speed USB device number 19 using xhci_hcd
-  [24327.634165] usb 1-10.3.2.2: device descriptor read/64, error -32
-  [24327.820870] usb 1-10.3.2.2: device descriptor read/64, error -32
-  [24327.929202] usb 1-10.3.2-port2: attempt power cycle
-  [24328.532633] usb 1-10.3.2.2: new full-speed USB device number 20 using xhci_hcd
-  [24328.533430] usb 1-10.3.2.2: Device not responding to setup address.
-  [24328.741040] usb 1-10.3.2.2: Device not responding to setup address.
-  [24328.948806] usb 1-10.3.2.2: device not accepting address 20, error -71
-  [24329.028795] usb 1-10.3.2.2: new full-speed USB device number 21 using xhci_hcd
-  [24329.029290] usb 1-10.3.2.2: Device not responding to setup address.
+# unplug and replug dmesg output
+#   [24325.338660] usb 1-10.3.2.2: USB disconnect, device number 17
+#   [24327.096856] usb 1-10.3.2.2: new full-speed USB device number 18 using xhci_hcd
+#   [24327.176834] usb 1-10.3.2.2: device descriptor read/64, error -32
+#   [24327.364872] usb 1-10.3.2.2: device descriptor read/64, error -32
+#   [24327.552839] usb 1-10.3.2.2: new full-speed USB device number 19 using xhci_hcd
+#   [24327.634165] usb 1-10.3.2.2: device descriptor read/64, error -32
+#   [24327.820870] usb 1-10.3.2.2: device descriptor read/64, error -32
+#   [24327.929202] usb 1-10.3.2-port2: attempt power cycle
+#   [24328.532633] usb 1-10.3.2.2: new full-speed USB device number 20 using xhci_hcd
+#   [24328.533430] usb 1-10.3.2.2: Device not responding to setup address.
+#   [24328.741040] usb 1-10.3.2.2: Device not responding to setup address.
+#   [24328.948806] usb 1-10.3.2.2: device not accepting address 20, error -71
+#   [24329.028795] usb 1-10.3.2.2: new full-speed USB device number 21 using xhci_hcd
+#   [24329.029290] usb 1-10.3.2.2: Device not responding to setup address.
+#
+#
+# 4. Debug disconnect detection issue
+# Cause: device never forgot its device address after first enumeration. Return to device default state was implemented by observing VbusValid falling edge which was never set with test device behind multiple USB hubs.
+# Workaround: Observe SessValid falling edge to return to default state
+
+[12731.828339] usb 1-10.3.2.2: new full-speed USB device number 44 using xhci_hcd
+[12731.928770] usb 1-10.3.2.2: not running at top speed; connect to a high speed hub
+[12731.929298] usb 1-10.3.2.2: config 1 interface 0 altsetting 0 endpoint 0x81 has invalid maxpacket 512, setting to 64
+[12731.929304] usb 1-10.3.2.2: config 1 interface 0 altsetting 0 endpoint 0x2 has invalid maxpacket 512, setting to 64
+[12731.930069] usb 1-10.3.2.2: New USB device found, idVendor=1d50, idProduct=605a
+[12731.930074] usb 1-10.3.2.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[12731.930077] usb 1-10.3.2.2: Product: Daisho USB test
+[12731.930081] usb 1-10.3.2.2: Manufacturer: Great Scott Gadgets
+[12731.930083] usb 1-10.3.2.2: SerialNumber: DAISHOUSB000
+[12734.678730] usb 1-10.3.2.2: USB disconnect, device number 44
+[12736.692259] usb 1-10.3.2.2: new full-speed USB device number 45 using xhci_hcd
+[12736.792735] usb 1-10.3.2.2: not running at top speed; connect to a high speed hub
+[12736.793217] usb 1-10.3.2.2: config 1 interface 0 altsetting 0 endpoint 0x81 has invalid maxpacket 512, setting to 64
+[12736.793222] usb 1-10.3.2.2: config 1 interface 0 altsetting 0 endpoint 0x2 has invalid maxpacket 512, setting to 64
+[12736.793996] usb 1-10.3.2.2: New USB device found, idVendor=1d50, idProduct=605a
+[12736.794001] usb 1-10.3.2.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[12736.794004] usb 1-10.3.2.2: Product: Daisho USB test
+[12736.794007] usb 1-10.3.2.2: Manufacturer: Great Scott Gadgets
+[12736.794010] usb 1-10.3.2.2: SerialNumber: DAISHOUSB000
 
 
-4. Debug disconnect detection issue
+5. Fix usb reset not bringing device in device default state
+
+

@@ -83,9 +83,9 @@ output	wire	[1:0]	dbg_linestate
 	//wire			alt_int		= in_rx_cmd[7];
 	
 	//wire			sess_end	= (vbus_state == 2'b00);
-	//wire			sess_valid	= (vbus_state == 2'b10);
+	wire			sess_valid	= (vbus_state == 2'b10) | (vbus_state == 2'b11);
+	reg				sess_valid_1;
 	wire			vbus_valid	= (vbus_state == 2'b11);
-	reg				vbus_valid_1; 
 	assign			stat_connected = vbus_valid;	// in HS mode explicit bit-stuff error will
 													// also signal EOP but this is Good Enough(tm)	
 	wire			rx_active	= (rx_event[0]);
@@ -156,7 +156,7 @@ always @(posedge phy_clk) begin
 	{opt_enable_hs_2, opt_enable_hs_1} <= {opt_enable_hs_1, opt_enable_hs};
 	{opt_ignore_vbus_2, opt_ignore_vbus_1} <= {opt_ignore_vbus_1, opt_ignore_vbus};
 	
-	vbus_valid_1 <= vbus_valid;
+	sess_valid_1 <= sess_valid;
 	phy_dir_1 <= phy_dir;
 
 	dc <= dc + 1'b1;
@@ -188,7 +188,7 @@ always @(posedge phy_clk) begin
 		stat_fs <= 1'b0;
 		stat_hs <= 1'b0;
 		can_send <= 1'b0;
-		vbus_valid_1 <= 1'b0;
+		sess_valid_1 <= 1'b0;
 		dc <= 0;
 		dc_wrap <= 0;
 		pkt_in_latch_defer <= 0;
@@ -440,6 +440,11 @@ always @(posedge phy_clk) begin
 
 	if(~reset_2) state <= ST_RST_0;
 	
+	// ULPI Spec:
+	// A standard peripheral should not use Vbus Valid to begin operation.
+	// The internal VbusValid may not indicate Vbus is valid on the 5th hub tier, which is allowed to be as low as 4.375V.
+	// Therefore the peripheral should use Session Valid.
+	
 	// detect a change in Vbus
 	//
 	// this works fine with regular USB 2.0 PHYs, however
@@ -448,7 +453,7 @@ always @(posedge phy_clk) begin
 	// disconnects.
 	//
 	if(~opt_ignore_vbus_2) begin
-		if(~vbus_valid & vbus_valid_1) begin
+		if(~sess_valid & sess_valid_1) begin
 			reset_ulpi <= 0;
 			state <= ST_RST_0;
 		end

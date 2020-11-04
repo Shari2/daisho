@@ -4,6 +4,7 @@
 
 daisho_usb2_ecm v0.0 milestone_1
   - Fix string descriptor encoding to utf16_le
+  - Fix reconnection issue (Observe SessValid instead of VbusValid to enter device default state)
 
 daisho_usb2_ecm v0.0
  - Hard fork from https://github.com/enjoy-digital/daisho commit 27bc20c3da392e60b2419d67c98f6c7475b73eb3
