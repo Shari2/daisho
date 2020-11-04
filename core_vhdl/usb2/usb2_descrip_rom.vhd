@@ -40,15 +40,15 @@ architecture rtl of usb2_descrip_rom is
     variable temp : ramType;
     file file_ptr : text;
     variable text_line : line;
-    variable high_nibbel : character;
-    variable low_nibbel : character;
+    variable high_nibble : character;
+    variable low_nibble : character;
   begin
     file_open(file_ptr, filename, READ_MODE);
     for i in 0 to ramType'high loop
       readline (file_ptr, text_line);
-      read (text_line, high_nibbel);
-      read (text_line, low_nibbel);
-      temp(i) := char_to_binary(high_nibbel) & char_to_binary(low_nibbel);
+      read (text_line, high_nibble);
+      read (text_line, low_nibble);
+      temp(i) := char_to_binary(high_nibble) & char_to_binary(low_nibble);
     end loop;
     file_close(file_ptr);
     return temp;
