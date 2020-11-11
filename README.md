@@ -2,6 +2,10 @@ SPDX-License-Identifier: BSD-2-Clause
 
 SPDX-FileCopyrightText: Copyright (c) 2020 Marian Sauer
 
+# Status
+Work on Milestone 1 is halted (2020-11-11). Evaluating [luna USB 2.0 core](https://github.com/greatscottgadgets/luna).
+
+
 # Goal
 Implement a real world use case USB-to-Ethernet device on an FPGA and learn
 something.
